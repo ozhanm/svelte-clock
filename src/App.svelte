@@ -1,6 +1,9 @@
 <script>
     import { onMount } from "svelte";
 
+    export let thememode;
+    $: themetext = thememode == "LIGHT" ? "DARK THEME" : "LIGHT THEME";
+
     let date = new Date();
     $: hourdeg = getHourDegree(date);
     $: minutedeg = getMinuteDegree(date);
@@ -35,9 +38,12 @@
         let data = 6 * second;
         return data;
     };
+    const clickHandle = () => {
+        thememode = thememode == "LIGHT" ? "DARK" : "LIGHT";
+    };
 </script>
 
-<main>
+<main class={`theme${thememode}`}>
     <div class="clock">
         {#each Array(12) as _, key}
             <span style="--key: {key + 1}">{key + 1}</span>
@@ -58,6 +64,7 @@
             />
         </div>
     </div>
+    <button class="themebtn" on:click={clickHandle}>{themetext}</button>
 </main>
 
 <style lang="scss">
@@ -67,7 +74,47 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #eee;
+        background: #f3f3f3;
+        flex-direction: column;
+        &.themeDARK {
+            background: #666;
+            .themebtn {
+                color: #333;
+                background: #fff;
+            }
+            .clock {
+                background: #444;
+                span {
+                    color: #fff;
+                    &:before {
+                        background: #333;
+                    }
+                }
+            }
+            .indicator {
+                .hand {
+                    background: #eee;
+                    &.hour {
+                        background: #ccc;
+                    }
+                }
+            }
+        }
+    }
+    .themebtn {
+        margin: 50px 0;
+
+        color: #fff;
+        background: #222;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 8px 25px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.8;
+        }
     }
     .clock {
         width: 400px;
@@ -89,7 +136,7 @@
             color: #333;
             font-size: 20px;
             &:before {
-                content: '';
+                content: "";
                 width: 2px;
                 height: 13px;
                 background: #999;
