@@ -97,6 +97,9 @@
                         &.hour {
                             background: #ccc;
                         }
+                        &.second {
+                            background: #e00;
+                        }
                     }
                 }
             }
