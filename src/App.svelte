@@ -84,18 +84,19 @@
             }
             .clock {
                 background: #444;
+                box-shadow: 0 5px 25px #888;
                 span {
                     color: #fff;
                     &:before {
                         background: #333;
                     }
                 }
-            }
-            .indicator {
-                .hand {
-                    background: #eee;
-                    &.hour {
-                        background: #ccc;
+                .indicator {
+                    .hand {
+                        background: #eee;
+                        &.hour {
+                            background: #ccc;
+                        }
                     }
                 }
             }
@@ -103,7 +104,6 @@
     }
     .themebtn {
         margin: 50px 0;
-
         color: #fff;
         background: #222;
         border: 1px solid #ccc;
@@ -187,6 +187,25 @@
                     width: 2px;
                     height: 150px;
                     background: #e00;
+                }
+            }
+        }
+    }
+    @media (max-width: 499px) {
+        .clock {
+            width: 320px;
+            height: 320px;
+            .indicator {
+                .hand {
+                    &.hour {
+                        height: 70px;
+                    }
+                    &.minute {
+                        height: 100px;
+                    }
+                    &.second {
+                        height: 110px;
+                    }
                 }
             }
         }
