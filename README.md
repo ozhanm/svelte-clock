@@ -3,7 +3,7 @@
 ---
 
 # Demo
-https://svelte-clock.ozhanmengucek.com
+https://svelte.ozhanmengucek.com/analog-clock/
 
 # svelte app
 
