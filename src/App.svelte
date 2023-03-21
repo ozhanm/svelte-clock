@@ -46,7 +46,9 @@
 <main class={`theme${thememode}`}>
     <div class="clock">
         {#each Array(12) as _, key}
-            <span style="--key: {key + 1}">{key + 1}</span>
+            <span style="--key: {key + 1}">
+                <b>{key + 1}</b>
+            </span>
         {/each}
 
         <div class="indicator">
@@ -138,6 +140,10 @@
             font-weight: 600;
             color: #333;
             font-size: 20px;
+            b {
+                display: inline-block;
+                transform: rotate(calc(var(--key) * (-360deg / 12)));
+            }
             &:before {
                 content: "";
                 width: 2px;
