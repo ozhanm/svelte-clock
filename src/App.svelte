@@ -141,6 +141,7 @@
             color: #333;
             font-size: 20px;
             b {
+                font-weight: 600;
                 display: inline-block;
                 transform: rotate(calc(var(--key) * (-360deg / 12)));
             }
